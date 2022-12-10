@@ -5,11 +5,6 @@ package TP5;
  * 
  */
 public class CaesarCode {
-    public static final int A = 65;
-    public static final int Z = 90;
-    public static final int a = 97;
-    public static final int z = 122;
-    public static final int ESPACE = 32;
 
     /**
      * verify if a character is a alphabetic
@@ -35,13 +30,13 @@ public class CaesarCode {
                 key = key % 26;
                 asciiCode += key;
 
-                if (asciiCode > z) {
-                    overtaking = asciiCode - z;
-                    asciiCode = a + overtaking - 1;
+                if (asciiCode > 'z') {
+                    overtaking = asciiCode - 'z';
+                    asciiCode = 'a' + overtaking - 1;
                 }
-                else if(asciiCode > Z && asciiCode <= Z + key){
-                    overtaking = asciiCode - Z;
-                    asciiCode = A + overtaking - 1;
+                else if(asciiCode > 'Z' && asciiCode <= 'Z' + key){
+                    overtaking = asciiCode - 'Z';
+                    asciiCode = 'A' + overtaking - 1;
                 }
                 messageCharacters[i] = (char)asciiCode;
             }
@@ -65,13 +60,13 @@ public class CaesarCode {
 
                 asciiCode -= key;
 
-                if(asciiCode < a && asciiCode >= a - key){
-                    overtaking = a - asciiCode;
-                    asciiCode = z - overtaking + 1;
+                if(asciiCode < 'a' && asciiCode >= 'a' - key){
+                    overtaking = 'a' - asciiCode;
+                    asciiCode = 'z' - overtaking + 1;
                 }
-                else if(asciiCode < A){
-                    overtaking = A - asciiCode;
-                    asciiCode = Z - overtaking + 1;
+                else if(asciiCode < 'A'){
+                    overtaking = 'A' - asciiCode;
+                    asciiCode = 'Z' - overtaking + 1;
                 }
                 messageCharacters[i] = (char)asciiCode;
             }
@@ -113,7 +108,7 @@ public class CaesarCode {
                     System.out.println("Le troiseme argument doit être -k. Tapez 'java CaesarCode' ou 'java CaesarCode -h' ou 'java CaesarCode --help'");
                     return;
                 }
-                
+
                 if(!args[3].matches("\\d+")){
                     System.out.println("La clé de cryptage/decryptage doit etre un nombre.  Tapez 'java CaesarCode' ou 'java CaesarCode -h' ou 'java CaesarCode --help'");
                     return;
